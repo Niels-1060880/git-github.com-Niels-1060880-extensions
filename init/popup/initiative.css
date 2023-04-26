@@ -1,0 +1,52 @@
+html,
+body {
+  width: 100%;
+}
+
+p {
+    color: white;
+    text-align: center;
+}
+
+#popup-content {
+  display: flex;
+  border: 1px solid black;
+}
+
+.done-list {
+  display: flex;
+  min-width: 50px;
+  border-right: 3.5px solid black;
+  margin: 0 15px;
+}
+
+.wait-list {
+  display: flex;
+}
+
+.card {
+  height: 100px;
+  width: 75px;
+  margin: 0 2.5px;
+  border-radius: 10px;
+}
+
+.enemy-card {
+  background-color: red;
+}
+
+.player-card {
+  background-color: green;
+}
+
+.ally-card {
+  background-color: blue;
+}
+
+.hide {
+    display: none;
+}
+
+.drag-over {
+    border: dashed 3px red;
+}
