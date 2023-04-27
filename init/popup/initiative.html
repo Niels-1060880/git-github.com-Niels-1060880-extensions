@@ -4,51 +4,126 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="initiative.css" />
   </head>
-
   <body>
     <div id="popup-content">
-      <div class="done-list dropzone"></div>
-      <div class="wait-list dropzone">
+      <div id="done-list" class="dropzone">
+        <!-- Cards will be dragged into this div -->
+      </div>
+      <div id="wait-list" class="dropzone">
+        <!-- Cards start in this div -->
         <div id="1" class="card enemy-card" draggable="true">
-            <p>Enemy</p>
+          <p>Enemy</p>
+          <div class="grave-stone-div">
+            <object
+              data="../icons/gravestone.svg"
+              class="grave-stone"
+              type=""
+            ></object>
+          </div>
         </div>
         <div id="2" class="card player-card" draggable="true">
-            <p>Anilla</p>
+          <p>Anila</p>
+          <div class="grave-stone-div">
+            <object
+              data="../icons/gravestone.svg"
+              class="grave-stone"
+              type=""
+            ></object>
+          </div>
         </div>
-        <div id="1" class="card enemy-card" draggable="true">
-            <p>Enemy</p>
-        </div>
-        <div id="3" class="card player-card" draggable="true">
-            <p>Skado</p>
+        <!-- <div id="3" class="card enemy-card" draggable="true">
+          <div class="boss-banner"></div>
+          <p>Enemy</p>
+          <div class="grave-stone-div">
+            <object
+              data="../icons/gravestone.svg"
+              class="grave-stone"
+              type=""
+            ></object>
+          </div>
         </div>
         <div id="4" class="card player-card" draggable="true">
-            <p>Leohorn</p>
-        </div>
-        <div id="1" class="card enemy-card" draggable="true">
-            <p>Enemy</p>
+          <p>Skado</p>
+          <div class="grave-stone-div">
+            <object
+              data="../icons/gravestone.svg"
+              class="grave-stone"
+              type=""
+            ></object>
+          </div>
         </div>
         <div id="5" class="card player-card" draggable="true">
-            <p>Skirr</p>
+          <p>Leohorn</p>
+          <div class="grave-stone-div">
+            <object
+              data="../icons/gravestone.svg"
+              class="grave-stone"
+              type=""
+            ></object>
+          </div>
         </div>
-        <div id="6" class="card player-card" draggable="true">
-            <p>Stazi</p>
+        <div id="6" class="card enemy-card" draggable="true">
+          <p>Enemy</p>
+          <div class="grave-stone-div">
+            <object
+              data="../icons/gravestone.svg"
+              class="grave-stone"
+              type=""
+            ></object>
+          </div>
         </div>
-        <div id="1" class="card enemy-card" draggable="true">
-            <p>Enemy</p>
+        <div id="7" class="card player-card" draggable="true">
+          <p>Skirr</p>
+          <div class="grave-stone-div">
+            <object
+              data="../icons/gravestone.svg"
+              class="grave-stone"
+              type=""
+            ></object>
+          </div>
         </div>
-        <div id="7" class="card ally-card" draggable="true">
-            <p>NPC</p>
+        <div id="8" class="card player-card" draggable="true">
+          <p>Stazi</p>
+          <div class="grave-stone-div">
+            <object
+              data="../icons/gravestone.svg"
+              class="grave-stone"
+              type=""
+            ></object>
+          </div>
         </div>
-        <div id="1" class="card enemy-card" draggable="true">
-            <p>Enemy</p>
+        <div id="9" class="card enemy-card" draggable="true">
+          <p>Enemy</p>
+          <div class="grave-stone-div">
+            <object
+              data="../icons/gravestone.svg"
+              class="grave-stone"
+              type=""
+            ></object>
+          </div>
         </div>
-
+        <div id="10" class="card ally-card" draggable="true">
+          <p>NPC</p>
+          <div class="grave-stone-div">
+            <object
+              data="../icons/gravestone.svg"
+              class="grave-stone"
+              type=""
+            ></object>
+          </div>
+        </div>
+        <div id="11" class="card enemy-card" draggable="true">
+          <p>Enemy</p>
+          <div class="grave-stone-div">
+            <object
+              data="../icons/gravestone.svg"
+              class="grave-stone"
+              type=""
+            ></object>
+          </div>
+        </div> -->
       </div>
     </div>
-    <!-- <div id="error-content" class="hidden">
-      <p>Can't beastify this web page.</p>
-      <p>Try a different page.</p>
-    </div> -->
     <script src="initiative.js"></script>
   </body>
 </html>

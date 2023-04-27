@@ -4,35 +4,60 @@ body {
 }
 
 p {
-    color: white;
-    text-align: center;
+  color: white;
+  text-align: center;
+  font-weight: bolder;
 }
 
 #popup-content {
   display: flex;
-  border: 1px solid black;
+  border: .5px solid grey;
+  min-height: 100px;
 }
 
-.done-list {
+#done-list {
   display: flex;
-  min-width: 50px;
+  min-width: 100px;
   border-right: 3.5px solid black;
-  margin: 0 15px;
+  padding: 0 75px 0 0;
+  overflow: hidden;
 }
 
-.wait-list {
+#wait-list {
   display: flex;
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100px;
   width: 75px;
-  margin: 0 2.5px;
+  margin: 0 1.5px;
   border-radius: 10px;
+}
+
+.grave-stone {
+pointer-events: none;
+  width: 30px;
+  text-align: center;
+}
+
+.grave-stone-div {
+  cursor: pointer;
 }
 
 .enemy-card {
   background-color: red;
+}
+
+.boss-banner {
+    position: relative;
+    height: 10px;
+    width: 100%;
+    margin-bottom: -10px;
+    background-color: gold;
 }
 
 .player-card {
@@ -44,9 +69,13 @@ p {
 }
 
 .hide {
-    display: none;
+  display: none;
+}
+
+.bloodied {
+  background-color: black;
 }
 
 .drag-over {
-    border: dashed 3px red;
+  border: dashed 3px red;
 }
