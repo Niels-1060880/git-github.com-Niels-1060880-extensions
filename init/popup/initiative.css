@@ -1,6 +1,7 @@
 html,
 body {
   width: 100%;
+  margin: 0;
 }
 
 p {
@@ -78,4 +79,17 @@ pointer-events: none;
 
 .drag-over {
   border: dashed 3px red;
+}
+
+.player-cards {
+    width: 100vw;
+    height: auto;
+    border: 1px solid black;
+    margin-top: 15px;
+}
+
+.new-card-row {
+    display: flex;
+    border: 1px solid black;
+    margin: 5px 0;
 }
