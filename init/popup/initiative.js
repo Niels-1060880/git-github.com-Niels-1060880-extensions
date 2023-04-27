@@ -2,6 +2,19 @@
 const item = document.getElementsByClassName("card");
 const graveStones = document.getElementsByClassName("grave-stone");
 
+// Handles bloodied toggle
+function bloodied(e) {
+  if (e.target.classList.contains("bloodied")) {
+    e.target.classList.remove("bloodied");
+    let graveStone = graveStones[e.target.id - 1];
+    graveStone.style.backgroundColor = "transparent";
+  } else {
+    e.target.classList.add("bloodied");
+    let graveStone = graveStones[e.target.id - 1];
+    graveStone.style.backgroundColor = "white";
+  }
+}
+
 // attach the dragstart event handler to all class items
 for (let i = 0; i < item.length; i++) {
   let addClass = item[i];
@@ -15,19 +28,6 @@ function dragStart(e) {
   setTimeout(() => {
     e.target.classList.add("hide");
   }, 0);
-}
-// Handles bloodied toggle
-function bloodied(e) {
-  console.log("click");
-  if (e.target.classList.contains("bloodied")) {
-    e.target.classList.remove("bloodied");
-    let graveStone = graveStones[e.target.id - 1];
-    graveStone.style.backgroundColor = "transparent";
-  } else {
-    e.target.classList.add("bloodied");
-    let graveStone = graveStones[e.target.id - 1];
-    graveStone.style.backgroundColor = "white";
-  }
 }
 
 const dropzone = document.querySelectorAll(".dropzone");
@@ -76,18 +76,25 @@ for (let i = 0; i < death.length; i++) {
 }
 
 function deathToggle(e) {
-  // e.node.remove()
-  console.log("click");
   e.target.parentElement.remove();
 }
 
 // Handles new round
-const doneList = document.getElementById("done-list").children;
-const waitList = document.getElementById("wait-list").children;
+const doneList = document.getElementById("done-list");
+const waitList = document.getElementById("wait-list");
 
-console.log(doneList.length);
-console.log(waitList.length);
+let divCheckingInterval = setInterval(function () {
+  if (waitList.children.length == 0) {
+    newRound(doneList.children)
+  }
+}, 500);
 
-if (waitList.length == 0) {
-  console.log('clear');
+function newRound(children) {
+  let cards = [];
+  for (let card of children) {
+    cards.push(card);
+  }
+  for (let card of cards) {
+    waitList.appendChild(card);
+  }
 }
