@@ -2,6 +2,7 @@ html,
 body {
   width: 100%;
   margin: 0;
+  background-color: rgb(177, 176, 176);
 }
 
 p {
@@ -12,8 +13,9 @@ p {
 
 #popup-content {
   display: flex;
-  border: .5px solid grey;
+  border: 0.5px solid grey;
   min-height: 100px;
+  margin-top: 10px;
 }
 
 #done-list {
@@ -40,7 +42,7 @@ p {
 }
 
 .grave-stone {
-pointer-events: none;
+  pointer-events: none;
   width: 30px;
   text-align: center;
 }
@@ -54,11 +56,11 @@ pointer-events: none;
 }
 
 .boss-banner {
-    position: relative;
-    height: 10px;
-    width: 100%;
-    margin-bottom: -10px;
-    background-color: gold;
+  position: relative;
+  height: 10px;
+  width: 100%;
+  margin-bottom: -10px;
+  background-color: gold;
 }
 
 .player-card {
@@ -81,15 +83,31 @@ pointer-events: none;
   border: dashed 3px red;
 }
 
+h2 {
+  text-align: center;
+}
+
+.selectable {
+  cursor: pointer;
+  height: 100px;
+  width: 75px;
+}
+
+.selectable .card {
+  pointer-events: none;
+}
+
 .player-cards {
-    width: 100vw;
-    height: auto;
-    border: 1px solid black;
-    margin-top: 15px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .new-card-row {
-    display: flex;
-    border: 1px solid black;
-    margin: 5px 0;
+  display: flex;
+  margin: 5px 0;
+  gap: 5px;
+  width: 450px;
+  justify-content: center;
 }

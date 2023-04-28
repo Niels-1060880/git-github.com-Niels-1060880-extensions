@@ -1,94 +1,84 @@
-// select the item element
-const item = document.getElementsByClassName("card");
 const graveStones = document.getElementsByClassName("grave-stone");
-
-// Handles bloodied toggle
-function bloodied(e) {
-  if (e.target.classList.contains("bloodied")) {
-    e.target.classList.remove("bloodied");
-    let graveStone = graveStones[e.target.id - 1];
-    graveStone.style.backgroundColor = "transparent";
-  } else {
-    e.target.classList.add("bloodied");
-    let graveStone = graveStones[e.target.id - 1];
-    graveStone.style.backgroundColor = "white";
-  }
-}
-
-// attach the dragstart event handler to all class items
-for (let i = 0; i < item.length; i++) {
-  let addClass = item[i];
-  addClass.addEventListener("dragstart", dragStart);
-  addClass.addEventListener("dblclick", bloodied);
-}
-
-// handle the dragstart
-function dragStart(e) {
-  e.dataTransfer.setData("text/plain", e.target.id);
-  setTimeout(() => {
-    e.target.classList.add("hide");
-  }, 0);
-}
-
-const dropzone = document.querySelectorAll(".dropzone");
-
-dropzone.forEach((zone) => {
-  zone.addEventListener("dragenter", dragEnter);
-  zone.addEventListener("dragover", dragOver);
-  zone.addEventListener("dragleave", dragLeave);
-  zone.addEventListener("drop", drop);
-});
-
-function dragEnter(e) {
-  e.preventDefault();
-  e.target.classList.add("drag-over");
-}
-
-function dragOver(e) {
-  e.preventDefault();
-  e.target.classList.add("drag-over");
-}
-
-function dragLeave(e) {
-  e.target.classList.remove("drag-over");
-}
-
-function drop(e) {
-  e.target.classList.remove("drag-over");
-
-  // get the draggable element
-  const id = e.dataTransfer.getData("text/plain");
-  const draggable = document.getElementById(id);
-
-  // add it to the drop target
-  e.target.appendChild(draggable);
-
-  // display the draggable element
-  draggable.classList.remove("hide");
-}
-
-// Handles death toggle
-const death = document.getElementsByClassName("grave-stone-div");
-
-for (let i = 0; i < death.length; i++) {
-  let addClass = death[i];
-  addClass.addEventListener("click", deathToggle);
-}
-
-function deathToggle(e) {
-  e.target.parentElement.remove();
-}
 
 // Handles new round
 const doneList = document.getElementById("done-list");
 const waitList = document.getElementById("wait-list");
 
+// Handles bloodied toggle
+function bloodied(e) {
+  if (e.classList.contains("bloodied")) {
+    e.classList.remove("bloodied");
+    let graveStone = graveStones[e.id - 1];
+    graveStone.style.backgroundColor = "transparent";
+  } else {
+    e.classList.add("bloodied");
+    let graveStone = graveStones[e.id - 1];
+    graveStone.style.backgroundColor = "white";
+  }
+}
+
+// Handles death toggle
+function deathToggle(e) {
+  e.parentElement.remove();
+}
+
+// Handles adding of new card
+const selectables = document.getElementsByClassName("selectable");
+let id = 1;
+for (let selectable of selectables) {
+  selectable.addEventListener("click", () => {
+    for (let child of selectable.children) {
+      let newChild = child.cloneNode(true);
+      newChild.id = id;
+      id++;
+      waitList.appendChild(newChild);
+    }
+  });
+}
+
+waitList.addEventListener("dragstart", (e) => {
+  // Change the source element's background color
+  // to show that drag has started
+  e.currentTarget.classList.add("dragging");
+  // Clear the drag data cache (for all formats/types)
+  e.dataTransfer.clearData();
+  // Set the drag's format and data.
+  // Use the event target's id for the data
+  e.dataTransfer.setData("text/plain", e.target.id);
+});
+
+doneList.addEventListener("dragenter", (e) => {
+  e.preventDefault();
+  e.target.classList.add("drag-over");
+});
+
+doneList.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  e.target.classList.add("drag-over");
+});
+
+doneList.addEventListener("dragleave", (e) => {
+  e.target.classList.remove("drag-over");
+});
+
+doneList.addEventListener("drop", (e) => {
+  e.preventDefault();
+  e.target.classList.remove("drag-over");
+  // get the draggable element
+  const id = e.dataTransfer.getData("text");
+  const draggable = document.getElementById(id);
+  // add it to the drop target
+  e.target.appendChild(draggable);
+});
+
+// Checks if wait list is empty
 let divCheckingInterval = setInterval(function () {
   if (waitList.children.length == 0) {
-    newRound(doneList.children)
+    newRound(doneList.children);
   }
 }, 500);
 
+// Puts all cards back in wait list
 function newRound(children) {
   let cards = [];
   for (let card of children) {
